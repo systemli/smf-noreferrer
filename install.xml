@@ -1,50 +1,50 @@
 <?xml version="1.0"?>
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
-	<name>Add a custom Prefix to link urls</name>
+	<name>Add a custom prefix to link urls</name>
 	<id>systemli:customlinkanchorprefix</id>
 	<version>1.0.0</version>
-	<homepage>https://www.systemli.org/</homepage>
-<file name="$sourcedir/ManagePosts.php">
-	<operation>
-		<search position="replace"><![CDATA[			array('int', 'edit_disable_time', 'subtext' => $txt['edit_disable_time_zero'], 'postinput' => $txt['manageposts_minutes']),]]></search>
-		<add><![CDATA[			array('int', 'edit_disable_time', 'subtext' => $txt['edit_disable_time_zero'], 'postinput' => $txt['manageposts_minutes']),
-	   array('text', 'link_prefix', 'postinput' => 'custom prefix to be inserted before href attributes link anchors.'),
-	   );]]></add>
-	 </operation>
-</file>
-<file name="$sourcedir/Subs.php">
+	<homepage>https://github.com/systemli/smf-noreferrer</homepage>
+	<file name="$sourcedir/ManagePosts.php">
 		<operation>
-			<search position="replace"><![CDATA[				'tag' => 'iurl',
-				'type' => 'unparsed_content',
-				'content' => '<a href="$1"]]></search>
-			<add><![CDATA[				'tag' => 'iurl',
-				'type' => 'unparsed_content',
-				'content' => '<a href="'. isset($modSettings['link_prefix']) ? $modSettings['link_prefix'] : "" .'$1" rel="external nofollow"]]></add>
+			<search position="replace"><![CDATA[			array('int', 'edit_disable_time', 'subtext' => $txt['edit_disable_time_zero'], 'postinput' => $txt['manageposts_minutes']),]]></search>
+			<add><![CDATA[			array('int', 'edit_disable_time', 'subtext' => $txt['edit_disable_time_zero'], 'postinput' => $txt['manageposts_minutes']),
+		   array('text', 'link_prefix', 'subtext' => $txt['link_prefix_desc']),
+		   ]]></add>
 		</operation>
-		<operation>
-			<search position="replace"><![CDATA[				'tag' => 'iurl',
-				'type' => 'unparsed_equals',
-				'before' => '<a href="$1"]]></search>
-			<add><![CDATA[				'tag' => 'iurl',
-				'type' => 'unparsed_equals',
-				'before' => '<a href="'. isset($modSettings['link_prefix']) ? $modSettings['link_prefix'] : "" .'$1" rel="external nofollow"]]></add>
-		</operation>
-		<operation>
-			<search position="replace"><![CDATA[				'tag' => 'url',
-				'type' => 'unparsed_content',
-				'content' => '<a href="$1"]]></search>
-			<add><![CDATA[				'tag' => 'url',
-				'type' => 'unparsed_content',
-				'content' => '<a href="'. isset($modSettings['link_prefix']) ? $modSettings['link_prefix'] : "" .'$1" rel="external nofollow"]]></add>
-		</operation>
-		<operation>
-			<search position="replace"><![CDATA[				'tag' => 'url',
-				'type' => 'unparsed_equals',
-				'before' => '<a href="$1"]]></search>
-			<add><![CDATA[				'tag' => 'url',
-				'type' => 'unparsed_equals',
-				'before' => '<a href="'. isset($modSettings['link_prefix']) ? $modSettings['link_prefix'] : "" .'$1" rel="external nofollow"]]></add>
-		</operation>
-</file>
+	</file>
+	<file name="$sourcedir/Subs.php">
+			<operation>
+				<search position="replace"><![CDATA[				'tag' => 'iurl',
+					'type' => 'unparsed_content',
+					'content' => '<a href="$1"]]></search>
+				<add><![CDATA[				'tag' => 'iurl',
+					'type' => 'unparsed_content',
+					'content' => '<a href="'. (isset($modSettings['link_prefix']) ? $modSettings['link_prefix'] : "") .'$1" rel="external nofollow"]]></add>
+			</operation>
+			<operation>
+				<search position="replace"><![CDATA[				'tag' => 'iurl',
+					'type' => 'unparsed_equals',
+					'before' => '<a href="$1"]]></search>
+				<add><![CDATA[				'tag' => 'iurl',
+					'type' => 'unparsed_equals',
+					'before' => '<a href="'. (isset($modSettings['link_prefix']) ? $modSettings['link_prefix'] : "") .'$1" rel="external nofollow"]]></add>
+			</operation>
+			<operation>
+				<search position="replace"><![CDATA[				'tag' => 'url',
+					'type' => 'unparsed_content',
+					'content' => '<a href="$1"]]></search>
+				<add><![CDATA[				'tag' => 'url',
+					'type' => 'unparsed_content',
+					'content' => '<a href="'. (isset($modSettings['link_prefix']) ? $modSettings['link_prefix'] : "") .'$1" rel="external nofollow"]]></add>
+			</operation>
+			<operation>
+				<search position="replace"><![CDATA[				'tag' => 'url',
+					'type' => 'unparsed_equals',
+					'before' => '<a href="$1"]]></search>
+				<add><![CDATA[				'tag' => 'url',
+					'type' => 'unparsed_equals',
+					'before' => '<a href="'. (isset($modSettings['link_prefix']) ? $modSettings['link_prefix'] : "") .'$1" rel="external nofollow"]]></add>
+			</operation>
+	</file>
 </modification>

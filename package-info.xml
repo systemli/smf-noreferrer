@@ -1,15 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
-	<name>Add a custom Prefix to link urls</name>
+	<name>Add a custom prefix to link urls</name>
 	<id>systemli:customlinkanchorprefix</id>
 	<type>modification</type>
 	<version>1.0.0</version>
 		<install for="2.0 - 2.0.99">
 		<readme type="file" parsebbc="true">readme.txt</readme>
 		<modification>install.xml</modification>
+		<modification>languages.xml</modification>
 	</install>
+
 	<uninstall for="2.0 - 2.0.99">
 		<modification reverse="true">install.xml</modification>
+		<modification reverse="true">languages.xml</modification>
 	</uninstall>
 </package-info>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<name>Add a custom Prefix to link urls</name>
+	<id>systemli:customlinkanchorprefix</id>
+	<version>1.0.0</version>
+
+	<file name="$languagedir/Modifications.english.php">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[
+//	MOD add custom link prefix
+$txt['link_prefix'] = 'Prefix Link Anchors with string';
+$txt['link_prefix_desc'] = 'lets you add custom prefix to links show inside posts ';]]></add>
+		</operation>
+	</file>
+	<file name="$languagedir/Modifications.english-utf8.php" error="skip">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[
+//	MOD add custom link prefix
+$txt['link_prefix'] = 'Prefix Link Anchors with string';
+$txt['link_prefix_desc'] = 'lets you add custom prefix to links show inside posts ';]]></add>
+		</operation>
+	</file>
+</modification>
